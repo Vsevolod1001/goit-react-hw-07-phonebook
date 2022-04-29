@@ -1,10 +1,7 @@
 import { useSelector } from 'react-redux';
 import { getFilter } from 'redux/selectors';
 import { ContactItem } from './ContactItem/ContactItem';
-import { useDeleteContactMutation } from 'redux/rtcQuery/rtcSlice';
 export const ContactList = ({ contacts }) => {
-  const [deleteContact, { isLoading }] = useDeleteContactMutation();
-
   const filter = useSelector(getFilter);
   console.log(contacts);
   const visible = contacts?.filter(us =>
@@ -15,14 +12,7 @@ export const ContactList = ({ contacts }) => {
     <div>
       {contacts &&
         visible.map(({ id, name, number }) => (
-          <ContactItem
-            key={id}
-            name={name}
-            number={number}
-            onDelete={deleteContact}
-            isLoading={isLoading}
-            id={id}
-          />
+          <ContactItem key={id} name={name} number={number} id={id} />
         ))}
     </div>
   );

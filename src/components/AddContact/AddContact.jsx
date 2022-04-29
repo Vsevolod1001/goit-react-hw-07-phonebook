@@ -2,9 +2,10 @@ import s from './AddContact.module.css';
 import { useState } from 'react';
 import shortid from 'shortid';
 import { useAddContactMutation } from 'redux/rtcQuery/rtcSlice';
+import { Spinner } from 'components/Spinner';
 
 export const AddContact = ({ contacts }) => {
-  const [createContact] = useAddContactMutation();
+  const [createContact, { isLoading }] = useAddContactMutation();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -56,7 +57,7 @@ export const AddContact = ({ contacts }) => {
           />
         </label>
         <button className={s.BtnInput} type="submit">
-          add
+          {isLoading ? <Spinner /> : 'ADD'}
         </button>
       </form>
     </div>

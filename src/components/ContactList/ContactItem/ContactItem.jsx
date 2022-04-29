@@ -1,5 +1,9 @@
+import { Spinner } from 'components/Spinner';
 import s from './ContactItem.module.css';
-export const ContactItem = ({ id, name, number, onDelete, isLoading }) => {
+import { useDeleteContactMutation } from 'redux/rtcQuery/rtcSlice';
+
+export const ContactItem = ({ id, name, number }) => {
+  const [deleteContact, { isLoading }] = useDeleteContactMutation();
   return (
     <div>
       <li key={id} className={s.listCounterCircle}>
@@ -10,9 +14,9 @@ export const ContactItem = ({ id, name, number, onDelete, isLoading }) => {
         <button
           type="button"
           className={s.BtnInput}
-          onClick={() => onDelete(id)}
+          onClick={() => deleteContact(id)}
         >
-          {isLoading ? 'Deleting...' : 'delete'}
+          {isLoading ? <Spinner /> : 'delete'}
         </button>
       </li>
     </div>

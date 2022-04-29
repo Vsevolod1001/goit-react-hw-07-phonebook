@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const filterSlice = createSlice({
-  name: 'filter',
+const contactSlice = createSlice({
+  name: 'contacts',
   initialState: {
     items: [
       { id: 'id-1', name: 'Игорь Викторович', number: '459-12-56' },
@@ -29,5 +29,5 @@ const filterSlice = createSlice({
   },
 });
 
-export const { addTodo, contactFilter, deleteTodo } = filterSlice.actions;
-export default filterSlice.reducer;
+export const { addTodo, contactFilter, deleteTodo } = contactSlice.actions;
+export default contactSlice.reducer;

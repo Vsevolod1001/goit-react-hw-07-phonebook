@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { contactFilter } from 'redux/contactSlice';
 import s from './Filter.module.css';
 
-export const Filter = ({ setFilter }) => {
+export const Filter = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
   return (

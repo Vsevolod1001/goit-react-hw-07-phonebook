@@ -7,7 +7,11 @@ export const ContactItem = ({ id, name, number, onDelete, isLoading }) => {
           {name}: {number}
         </p>
 
-        <button type="button" className={s.BtnInput} onClick={onDelete}>
+        <button
+          type="button"
+          className={s.BtnInput}
+          onClick={() => onDelete(id)}
+        >
           {isLoading ? 'Deleting...' : 'delete'}
         </button>
       </li>

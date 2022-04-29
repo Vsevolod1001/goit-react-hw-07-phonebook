@@ -1,25 +1,27 @@
-// import { useSelector } from 'react-redux';
-// import { getFilter } from 'redux/selectors';
+import { useSelector } from 'react-redux';
+import { getFilter } from 'redux/selectors';
 import { ContactItem } from './ContactItem/ContactItem';
 import { useDeleteContactMutation } from 'redux/rtcQuery/rtcSlice';
 export const ContactList = ({ contacts }) => {
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
-  // const filter = useSelector(getFilter);
+  const filter = useSelector(getFilter);
+  console.log(contacts);
+  const visible = contacts?.filter(us =>
+    us.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
-  // const visible = contacts.filter(us =>
-  //   us.name.toLowerCase().includes(filter.toLowerCase())
-  // );
   return (
     <div>
       {contacts &&
-        contacts.map(({ id, name, number }) => (
+        visible.map(({ id, name, number }) => (
           <ContactItem
             key={id}
             name={name}
             number={number}
             onDelete={deleteContact}
             isLoading={isLoading}
+            id={id}
           />
         ))}
     </div>

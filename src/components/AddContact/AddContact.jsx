@@ -23,7 +23,7 @@ export const AddContact = ({ contacts }) => {
   };
   const hendleSubmit = e => {
     e.preventDefault();
-    saveContact(name);
+    saveContact(name, number);
     setName('');
     setNumber('');
   };
